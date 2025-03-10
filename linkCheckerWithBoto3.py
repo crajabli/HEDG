@@ -1,9 +1,40 @@
 import re
 import boto3
 import requests
+import boto3
+import boto3
 
 # Initialize the S3 client
+# pip install boto3
+#     ```
+
+# 2. Import Boto3: Import the Boto3 library in your Python script:
+#     ```python
+#     ```
+
+# 3. Create an S3 Client: Create an S3 client object by calling the `boto3.client()` method and passing the service name as `'s3'`:
+#     ```python
+#     s3 = boto3.client('s3')
+#     ```
+
+# 4. Use the S3 Client: You can now use the `s3` object to interact with Amazon S3. For example, you can list objects in a bucket, upload files, download files, etc.
+
+# Here's an example of listing objects in a bucket:
+
+# Connect to the S3 client
 s3 = boto3.client('s3')
+
+# Navigate to the "modules" directory
+bucket_name = 'cppr-institute-prod'
+prefix = 'modules/'
+
+response = s3.list_objects(Bucket=bucket_name, Prefix=prefix)
+
+if 'Contents' in response:
+    for obj in response['Contents']:
+        print(obj['Key'])
+else:
+    print("No objects found in the 'modules' directory.")
 
 
 def try_link_connection(website):
